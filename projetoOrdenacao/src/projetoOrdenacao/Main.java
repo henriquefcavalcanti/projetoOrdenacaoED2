@@ -1,7 +1,5 @@
 package projetoOrdenacao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,6 +12,9 @@ public class Main {
 		Random randomGenerator = new Random();
 		BubbleSort bubbleSort = new BubbleSort();
 		InsertionSort insertionSort = new InsertionSort();
+		MergeSort mergeSort = new MergeSort();
+		QuickSort quickSort = new QuickSort();
+		SeletionSort seletionSort = new SeletionSort();
 
 		int[] numberList = new int[10];
 
@@ -21,37 +22,51 @@ public class Main {
 			numberList[i] = randomGenerator.nextInt(100);
 		}
 
-		System.out.println("A entrada de nÃºmeros serÃ¡:");
+		System.out.println("A entrada de números será:");
 		printArray(numberList);
-		
 
+		int newList[];
 		do {
 			showMenu();
 			int selection = scanner.nextInt();
-			
+
 			switch (selection) {
 			case 1:
-				int[] newList = bubbleSort.sort(numberList);
+				newList = bubbleSort.sort(numberList);
 				printArray(newList);
 				break;
 			case 2:
-				int[] newList1 = insertionSort.sort(numberList);
-				printArray(newList1);
+				newList = insertionSort.sort(numberList);
+				printArray(newList);
+				break;
+			case 3:
+				newList = mergeSort.sort(numberList);
+				printArray(newList);
+				break;
+			case 4:
+				newList = quickSort.sort(numberList);
+				printArray(newList);
+				break;
+			case 5:
+				newList = seletionSort.sort(numberList);
+				printArray(newList);
 				break;
 			default:
 				System.out.println("Escolha um item do menu!!");
 				break;
 			}
-			
+
 		} while (menuControl);
-		
+		scanner.close();
+
 	}
-	
+
 	static void showMenu() {
 
 		System.out.println();
+		System.out.println();
 		System.out.println("------------------------------");
-		System.out.println("Escolha uma forma de ordenaÃ§Ã£o:");
+		System.out.println("Escolha uma forma de ordenação:");
 		System.out.println("1 - Bubble Sort");
 		System.out.println("2 - Insertion Sort");
 		System.out.println("3 - Merge Sort");
@@ -59,19 +74,11 @@ public class Main {
 		System.out.println("5 - Seletion Sort");
 
 	}
-	
-	static void printArray(int [] numberList) {
+
+	static void printArray(int[] numberList) {
 		for (int i : numberList) {
 			System.out.print(i + " ");
 		}
 	}
 
 }
-
-
-
-
-
-
-
-
